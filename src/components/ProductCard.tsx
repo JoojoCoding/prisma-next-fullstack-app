@@ -31,7 +31,7 @@ export function ProductCard({ id, name, priceInCents, description, imagePath }: 
             <CardDescription>{formatCurrency(priceInCents / 100)}</CardDescription>
         </CardHeader>
         <CardContent className="flex-grow">
-            <p className="line-clamp-4">{description}</p>
+            <div className="line-clamp-4">{description}</div>
         </CardContent>
         <CardFooter>
             <Button asChild size="lg" className="w-full">
@@ -43,15 +43,16 @@ export function ProductCard({ id, name, priceInCents, description, imagePath }: 
 }
 
 export function ProductCardSkeleton(){
-    return <Card className="overflow-hidden flex flex-col animate-pulse">
+    return (
+    <Card className="overflow-hidden flex flex-col animate-pulse">
         <Skeleton className="w-full aspect-video bg-gray-300"/>
         <CardHeader>
             <CardTitle>
                 <Skeleton className="w-3/4 h-6 rounded-full bg-gray-300" />
             </CardTitle>
-            <CardDescription>
+            <div className="text-sm text-muted-foreground">
                 <Skeleton className="w-1/2 h-4 rounded-full bg-gray-300" />
-            </CardDescription>
+            </div>
         </CardHeader>
         <CardContent className="space-y-2">
             <Skeleton className="w-full h-4 rounded-full bg-gray-300" />
@@ -62,4 +63,5 @@ export function ProductCardSkeleton(){
             <Button className="w-full" disabled size="lg"></Button>
         </CardFooter>
     </Card>
+    )
 }
